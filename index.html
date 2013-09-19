@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Nathan Friend</title>
+
+    <link href='http://fonts.googleapis.com/css?family=Arapey:400italic,400' rel='stylesheet' type='text/css'>    
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arapey', serif;            
+        }
+
+        h1 {
+            color: white;
+            font-size: 10em;
+            font-weight: normal;
+            margin: 0px;
+        }
+
+        #main-name {
+            display: table-cell;
+            vertical-align: middle;
+        }
+
+        #name-subtitle {
+            color: grey;
+            font-size: 3em;
+            font-style: italic;
+            margin: 0;
+            padding: 0;
+            margin-bottom: 3em;
+        }
+
+        .header {
+            position: absolute;
+            width: 100%;
+            /*background: #242424;*/
+            background-image: url("images/hexabump_@2X.png");
+            height: 40%;
+            text-align: center;
+            min-height: 262px;
+            display: table;
+            border-bottom: 10px solid #FFB901;
+        }
+
+        .menu-container {
+            position: relative;
+            width: 50%;
+            height: 100%;
+            margin: 0 auto;
+        }
+
+        .menu {
+            position: absolute;
+            width: 100%;
+            height: 20%;
+            bottom: 0px;
+        }
+
+        .menu-button {
+            position: absolute;
+            width: 30.33333333%;
+            margin-right: 3%;
+            height: 100%;
+            border-style: solid;
+            border-width: 0;
+            border-left-width: 4px;
+            border-top-width: 4px;
+            box-sizing: border-box;
+            color: white;
+            font-size: 4em;
+            cursor: pointer;
+            border-top-left-radius: 10px;
+        }
+
+            
+
+            .menu-button p {
+                margin: 0;
+                margin-top: 10px;
+                margin-left: 32%;
+                padding: 0;
+                float: left;
+            }
+
+        #about {
+            /*google:*/
+            /*border-color: #F90101;*/
+            /*microsoft:*/
+            border-color: #F25022;
+            left: 0%;
+        }
+
+            #about.active {
+                background-color: darkred;
+            }
+
+            #about .button-icon {
+                /*google:*/
+                /*background: #F90101;*/
+                /*microsoft:*/
+                background: #F25022;
+            }
+
+        #projects {
+            /*google:*/
+            /*border-color: #00933B;*/
+            /*microsoft:*/
+            border-color: #7FBA00;
+            left: 33.333333%;
+        }
+
+            #projects.active {
+                background-color: darkgreen;
+            }
+
+            #projects .button-icon {
+                /*google:*/
+                /*background: #00933B;*/
+                /*microsoft:*/
+                background: #7FBA00;
+            }
+
+        #contact {
+            /*google:*/
+            /*border-color: #0266C8;*/
+            /*microsoft:*/
+            border-color: #00A3EE;
+            left: 66.666666%;
+        }
+
+            #contact.active {
+                background-color: darkblue;
+            }
+
+            #contact .button-icon {
+                /*google:*/
+                /*background: #0266C8;*/
+                /*microsoft:*/
+                background: #00A3EE;
+            }
+
+        .button-icon {
+            position: absolute;
+            height: 100%;
+            width: auto;
+            float: left;
+            box-sizing: border-box;
+            left: 0px;
+        }
+    </style>
+
+    <script src="js/jquery-1.10.2.min.js"></script>
+
+    <script>
+        $(init);
+
+        function init() {
+            console.log($("div").outerHeight());
+        }
+    </script>
+
+</head>
+<body>
+    <div class="header">
+        <div id="main-name">
+            <h1>Nathan Friend</h1>
+            <p id="name-subtitle">Software Developer -  Des Moines, Iowa</p>
+        </div>
+    </div>
+    <div class="header" style="background-image: none;">
+        <div class="menu-container">
+            <div class="menu">
+                <div class="menu-button" id="about">
+                    <img class="button-icon" src="images/appbar.information.circle.svg" />
+                    <p>about</p>
+                </div>
+                <div class="menu-button" id="projects">
+                    <img class="button-icon" src="images/appbar.tools.svg" />
+                    <p>projects</p>
+                </div>
+                <div class="menu-button" id="contact">
+                    <img class="button-icon" src="images/appbar.phone.svg" />
+                    <p>contact</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
