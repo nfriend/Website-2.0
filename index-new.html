@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Nathan Friend</title>
+
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link href='http://fonts.googleapis.com/css?family=Arapey:400italic,400' rel='stylesheet' type='text/css' />
+
+    <style>
+        body {
+            font-family: 'Arapey', serif;
+            margin: 0;
+        }
+
+        h1 {
+            font-weight: normal;
+            margin: 0;
+        }
+
+        .header {
+            text-align: center;
+            width: 100%;
+            background-image: url("images/hexabump_@2X.png");
+            border-bottom: solid #FFB901;
+        }
+
+        .menu-container {
+            position: relative;
+            margin: 0 auto;
+        }
+
+        .menu-item {
+            float: left;
+            border-style: solid;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            cursor: pointer;
+        }
+
+            .menu-item * {
+                float: left;
+            }
+
+            .menu-item p {
+                color: white;
+                margin: 0;
+            }
+
+        #name {
+            color: white;
+        }
+
+        #name-subtitle {
+            color: gray;
+            font-style: italic;
+            margin: 0;
+        }
+
+        #about {
+            border-color: #F25022;
+        }
+
+            #about:hover {
+                background: #F25022;
+            }
+
+            #about.active img {
+                background: #F25022;
+            }
+
+        #projects {
+            border-color: #7FBA00;
+        }
+
+            #projects:hover {
+                background: #7FBA00;
+            }
+
+            #projects.active img {
+                background: #7FBA00;
+            }
+
+        #contact {
+            border-color: #00A3EE;
+        }
+
+            #contact:hover {
+                background: #00A3EE;
+            }
+
+            #contact.active img {
+                background: #00A3EE;
+            }
+
+        @media (min-width: 2560px) {
+            h1 {
+                font-size: 160px;
+            }
+
+            .header {
+                height: 520px;
+                border-bottom-width: 8px;
+            }
+
+            .menu-container {
+                top: 135px;
+                width: 640px;
+                height: 61px;
+            }
+
+            .menu-item {
+                width: 194.33px;
+                border-width: 4px 0 0 4px;
+                border-top-left-radius: 10px;
+                margin-right: 15px;
+            }
+
+                .menu-item img {
+                    height: 58px;
+                }
+
+                .menu-item p {
+                    font-size: 32px;
+                    padding: 12px 0 0 12px;
+                }
+
+            #name {
+                padding-top: 95px;
+            }
+
+            #name-subtitle {
+                font-size: 48px;
+            }
+        }
+    </style>
+
+    <script src="js/jquery-1.10.2.min.js"></script>
+
+    <script>
+        $(init);
+
+        function init() {
+
+            var mouseDownStartTime;
+
+            $(".menu-item").click(function () {
+                $that = $(this);
+                $(".menu-item").each(function () {
+                    $this = $(this);
+                    if ($that.is($this)) {
+                        $this.addClass("active");
+                    } else {
+                        $this.removeClass("active");
+                    }
+                });
+            }).mousedown(function (e) {
+                e.preventDefault();
+                mouseDownStartTime = new Date();
+                $(this).addClass("pressed");
+            });
+
+            $(window).mouseup(function () {
+                var timeSinceMouseDown = (new Date()).getTime() - mouseDownStartTime.getTime();
+                console.log(timeSinceMouseDown);
+
+                if (timeSinceMouseDown > 100) {
+                    $(".menu-item").removeClass("pressed");
+                } else {
+                    setTimeout(function () {
+                        $(".menu-item").removeClass("pressed");
+                    }, timeSinceMouseDown);
+                }
+
+
+            });
+        };
+    </script>
+
+</head>
+<body>
+    <div class="header">
+        <h1 id="name">Nathan Friend</h1>
+        <p id="name-subtitle">Software Developer -  Des Moines, Iowa</p>
+        <div class="menu-container">
+            <div id="about" class="menu-item">
+                <img src="images/appbar.information.circle.svg" />
+                <p>about</p>
+            </div>
+            <div id="projects" class="menu-item">
+                <img src="images/appbar.tools.svg" />
+                <p>projects</p>
+            </div>
+            <div id="contact" class="menu-item">
+                <img src="images/appbar.phone.svg" />
+                <p>contact</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
