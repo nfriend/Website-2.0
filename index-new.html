@@ -27,18 +27,58 @@
         }
 
         .menu-container {
-            position: relative;
+            position: absolute;
             margin: 0 auto;
+            top: 0;
+            left: 50%;
+        }
+
+        .menu-item-container {
+            position: absolute;
+            bottom: 0;
+            -webkit-transform-style: preserve-3d;
+            -moz-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+            -webkit-perspective: 800;
+            -moz-perspective: 800px;
+            -ms-perspective: 800;
+            perspective: 800;
+
+            -webkit-transform-origin-y: bottom;
+            -moz-transform-origin: bottom left;
+            -moz-perspective-origin: bottom;
+
+            -webkit-backface-visibility: hidden;
+            -moz-backface-visibility: hidden;
         }
 
         .menu-item {
-            float: left;
             border-style: solid;
+
             -webkit-user-select: none;
             -moz-user-select: none;
             -ms-user-select: none;
+
             cursor: pointer;
+
+            -webkit-transform-origin: left;
+            -moz-transform-origin: left;
+
+            -webkit-transition: -webkit-transform .5s;
+            -moz-transition: -moz-transform .5s;
+            -webkit-backface-visibility: hidden;
+            -moz-backface-visibility: hidden;
+
+            outline: 1px solid transparent;
         }
+
+            .menu-item.pressed {
+                -webkit-transform: rotateY(30deg);
+                -moz-transform: rotateY(30deg);
+
+                -webkit-transition: -webkit-transform .1s;
+                -moz-transition: -moz-transform .1s;
+            }
 
             .menu-item * {
                 float: left;
@@ -48,6 +88,20 @@
                 color: white;
                 margin: 0;
             }
+
+        .menu-item-overlay {
+            position: absolute;
+            top: 0;
+            background: linear-gradient(90deg, rgba(0,0,0,0), rgba(0,0,0,1));
+            opacity: 0;
+            width: 98%;
+            height: 100%;
+            -webkit-transition: opacity .1s;
+        }
+
+        .menu-item.pressed .menu-item-overlay {
+            opacity: .5;
+        }
 
         #name {
             color: white;
@@ -71,17 +125,25 @@
                 background: #F25022;
             }
 
+        #projects-container {
+            left: 33.33%;
+        }
+
         #projects {
             border-color: #7FBA00;
         }
 
-            #projects:hover {
+            #projects:hover, #projects.maintain-solid-background {
                 background: #7FBA00;
             }
 
             #projects.active img {
                 background: #7FBA00;
             }
+
+        #contact-container {
+            left: 66.66%;
+        }
 
         #contact {
             border-color: #00A3EE;
@@ -106,16 +168,19 @@
             }
 
             .menu-container {
-                top: 135px;
                 width: 640px;
-                height: 61px;
+                margin-left: -320px;
+                height: 520px;
+            }
+
+            .menu-item-container {
+                width: 194.33px;
             }
 
             .menu-item {
-                width: 194.33px;
                 border-width: 4px 0 0 4px;
                 border-top-left-radius: 10px;
-                margin-right: 15px;
+                height: 58px;
             }
 
                 .menu-item img {
@@ -146,7 +211,9 @@
 
             var mouseDownStartTime;
 
-            $(".menu-item").click(function () {
+            $(".menu-item").mousedown(function (e) {
+                e.preventDefault();
+
                 $that = $(this);
                 $(".menu-item").each(function () {
                     $this = $(this);
@@ -156,8 +223,7 @@
                         $this.removeClass("active");
                     }
                 });
-            }).mousedown(function (e) {
-                e.preventDefault();
+
                 mouseDownStartTime = new Date();
                 $(this).addClass("pressed");
             });
@@ -168,10 +234,15 @@
 
                 if (timeSinceMouseDown > 100) {
                     $(".menu-item").removeClass("pressed");
+                    setTimeout(function () {
+                        $(".menu-item");
+                    }, 500);
                 } else {
                     setTimeout(function () {
                         $(".menu-item").removeClass("pressed");
-                    }, timeSinceMouseDown);
+                    }, 100 - timeSinceMouseDown);
+
+                    console.log("setting timer for " + timeSinceMouseDown);
                 }
 
 
@@ -185,17 +256,26 @@
         <h1 id="name">Nathan Friend</h1>
         <p id="name-subtitle">Software Developer -  Des Moines, Iowa</p>
         <div class="menu-container">
-            <div id="about" class="menu-item">
-                <img src="images/appbar.information.circle.svg" />
-                <p>about</p>
+            <div id="about-container" class="menu-item-container">
+                <div id="about" class="menu-item">
+                    <img src="images/appbar.information.circle.svg" />
+                    <p>about</p>
+                    <div class="menu-item-overlay"></div>
+                </div>
             </div>
-            <div id="projects" class="menu-item">
-                <img src="images/appbar.tools.svg" />
-                <p>projects</p>
+            <div id="projects-container" class="menu-item-container">
+                <div id="projects" class="menu-item">
+                    <img src="images/appbar.tools.svg" />
+                    <p>projects</p>
+                    <div class="menu-item-overlay"></div>
+                </div>
             </div>
-            <div id="contact" class="menu-item">
-                <img src="images/appbar.phone.svg" />
-                <p>contact</p>
+            <div id="contact-container" class="menu-item-container">
+                <div id="contact" class="menu-item">
+                    <img src="images/appbar.phone.svg" />
+                    <p>contact</p>
+                    <div class="menu-item-overlay"></div>
+                </div>
             </div>
         </div>
     </div>
