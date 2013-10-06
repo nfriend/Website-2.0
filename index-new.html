@@ -36,21 +36,48 @@
         .menu-item-container {
             position: absolute;
             bottom: 0;
+
             -webkit-transform-style: preserve-3d;
             -moz-transform-style: preserve-3d;
             transform-style: preserve-3d;
+            
             -webkit-perspective: 800;
             -moz-perspective: 800px;
             -ms-perspective: 800;
-            perspective: 800;
-
+            perspective: 800px;
+            
             -webkit-transform-origin-y: bottom;
             -moz-transform-origin: bottom left;
+            -ms-transform-origin: bottom;
+            transform-origin: bottom;
+
             -moz-perspective-origin: bottom;
+            -ms-perspective-origin: bottom;
+            perspective-origin: bottom;
 
             -webkit-backface-visibility: hidden;
             -moz-backface-visibility: hidden;
+            backface-visibility: hidden;
         }
+
+            .menu-item-container > div {
+                cursor: pointer;
+
+                -webkit-transform-origin: left;
+                -moz-transform-origin: left;
+                -ms-transform-origin: left;
+                transform-origin: left;
+                
+                -webkit-transition: -webkit-transform .5s, opacity .5s;
+                -moz-transition: -moz-transform .5s, opacity .5s;
+                transition: transform .5s, opacity .5s;
+
+                -webkit-backface-visibility: hidden;
+                -moz-backface-visibility: hidden;
+                backface-visibility: hidden;
+
+                outline: 1px solid transparent;
+            }
 
         .menu-item {
             border-style: solid;
@@ -58,26 +85,18 @@
             -webkit-user-select: none;
             -moz-user-select: none;
             -ms-user-select: none;
-
-            cursor: pointer;
-
-            -webkit-transform-origin: left;
-            -moz-transform-origin: left;
-
-            -webkit-transition: -webkit-transform .5s;
-            -moz-transition: -moz-transform .5s;
-            -webkit-backface-visibility: hidden;
-            -moz-backface-visibility: hidden;
-
-            outline: 1px solid transparent;
+            user-select: none;
         }
 
-            .menu-item.pressed {
+            .menu-item.pressed, .menu-item-overlay.pressed {
                 -webkit-transform: rotateY(30deg);
                 -moz-transform: rotateY(30deg);
+                -ms-transform: rotateY(30deg);
+                transform: rotateY(30deg);
 
-                -webkit-transition: -webkit-transform .1s;
-                -moz-transition: -moz-transform .1s;
+                -webkit-transition: -webkit-transform .1s, opacity .1s;
+                -moz-transition: -moz-transform .1s, opacity .1s;
+                transition: transform .1s, opacity .1s;
             }
 
             .menu-item * {
@@ -94,12 +113,14 @@
             top: 0;
             background: linear-gradient(90deg, rgba(0,0,0,0), rgba(0,0,0,1));
             opacity: 0;
-            width: 98%;
+            width: 100%;
             height: 100%;
-            -webkit-transition: opacity .1s;
+
+            -webkit-transition: opacity .5s;
+            -moz-transition: opacity .1s;
         }
 
-        .menu-item.pressed .menu-item-overlay {
+        .menu-item-overlay.pressed {
             opacity: .5;
         }
 
@@ -117,7 +138,7 @@
             border-color: #F25022;
         }
 
-            #about:hover {
+            .menu-item-container:hover #about {
                 background: #F25022;
             }
 
@@ -133,7 +154,7 @@
             border-color: #7FBA00;
         }
 
-            #projects:hover, #projects.maintain-solid-background {
+            .menu-item-container:hover #projects {
                 background: #7FBA00;
             }
 
@@ -149,7 +170,7 @@
             border-color: #00A3EE;
         }
 
-            #contact:hover {
+            .menu-item-container:hover #contact {
                 background: #00A3EE;
             }
 
@@ -211,13 +232,13 @@
 
             var mouseDownStartTime;
 
-            $(".menu-item").mousedown(function (e) {
+            $(".menu-item-overlay").mousedown(function (e) {
                 e.preventDefault();
 
-                $that = $(this);
+                $siblingMenuItem = $(this).siblings(".menu-item");
                 $(".menu-item").each(function () {
                     $this = $(this);
-                    if ($that.is($this)) {
+                    if ($this.is($siblingMenuItem)) {
                         $this.addClass("active");
                     } else {
                         $this.removeClass("active");
@@ -225,24 +246,24 @@
                 });
 
                 mouseDownStartTime = new Date();
-                $(this).addClass("pressed");
+                $siblingMenuItem.add(this).addClass("pressed");
             });
 
             $(window).mouseup(function () {
                 var timeSinceMouseDown = (new Date()).getTime() - mouseDownStartTime.getTime();
-                console.log(timeSinceMouseDown);
+
+                $(".menu-item, .menu-item-overlay").removeClass("pressed");
+                return;
 
                 if (timeSinceMouseDown > 100) {
-                    $(".menu-item").removeClass("pressed");
+                    $(".menu-item, .menu-item-overlay").removeClass("pressed");
                     setTimeout(function () {
-                        $(".menu-item");
+                        $(".menu-item, .menu-item-overlay");
                     }, 500);
                 } else {
                     setTimeout(function () {
-                        $(".menu-item").removeClass("pressed");
+                        $(".menu-item, .menu-item-overlay").removeClass("pressed");
                     }, 100 - timeSinceMouseDown);
-
-                    console.log("setting timer for " + timeSinceMouseDown);
                 }
 
 
@@ -260,22 +281,22 @@
                 <div id="about" class="menu-item">
                     <img src="images/appbar.information.circle.svg" />
                     <p>about</p>
-                    <div class="menu-item-overlay"></div>
                 </div>
+                <div class="menu-item-overlay"></div>
             </div>
             <div id="projects-container" class="menu-item-container">
                 <div id="projects" class="menu-item">
                     <img src="images/appbar.tools.svg" />
                     <p>projects</p>
-                    <div class="menu-item-overlay"></div>
                 </div>
+                <div class="menu-item-overlay"></div>
             </div>
             <div id="contact-container" class="menu-item-container">
                 <div id="contact" class="menu-item">
                     <img src="images/appbar.phone.svg" />
                     <p>contact</p>
-                    <div class="menu-item-overlay"></div>
                 </div>
+                <div class="menu-item-overlay"></div>
             </div>
         </div>
     </div>
