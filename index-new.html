@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <title>Nathan Friend</title>
 
-    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <link href='http://fonts.googleapis.com/css?family=Arapey:400italic,400' rel='stylesheet' type='text/css' />
 
     <style>
@@ -36,25 +36,20 @@
         .menu-item-container {
             position: absolute;
             bottom: 0;
-
             -webkit-transform-style: preserve-3d;
             -moz-transform-style: preserve-3d;
             transform-style: preserve-3d;
-            
             -webkit-perspective: 800;
             -moz-perspective: 800px;
             -ms-perspective: 800;
             perspective: 800px;
-            
             -webkit-transform-origin-y: bottom;
             -moz-transform-origin: bottom left;
             -ms-transform-origin: bottom;
             transform-origin: bottom;
-
             -moz-perspective-origin: bottom;
             -ms-perspective-origin: bottom;
             perspective-origin: bottom;
-
             -webkit-backface-visibility: hidden;
             -moz-backface-visibility: hidden;
             backface-visibility: hidden;
@@ -62,26 +57,21 @@
 
             .menu-item-container > div {
                 cursor: pointer;
-
                 -webkit-transform-origin: left;
                 -moz-transform-origin: left;
                 -ms-transform-origin: left;
                 transform-origin: left;
-                
                 -webkit-transition: -webkit-transform .5s, opacity .5s;
                 -moz-transition: -moz-transform .5s, opacity .5s;
                 transition: transform .5s, opacity .5s;
-
                 -webkit-backface-visibility: hidden;
                 -moz-backface-visibility: hidden;
                 backface-visibility: hidden;
-
                 outline: 1px solid transparent;
             }
 
         .menu-item {
             border-style: solid;
-
             -webkit-user-select: none;
             -moz-user-select: none;
             -ms-user-select: none;
@@ -93,7 +83,6 @@
                 -moz-transform: rotateY(30deg);
                 -ms-transform: rotateY(30deg);
                 transform: rotateY(30deg);
-
                 -webkit-transition: -webkit-transform .1s, opacity .1s;
                 -moz-transition: -moz-transform .1s, opacity .1s;
                 transition: transform .1s, opacity .1s;
@@ -115,14 +104,13 @@
             opacity: 0;
             width: 100%;
             height: 100%;
-
             -webkit-transition: opacity .5s;
             -moz-transition: opacity .1s;
         }
 
-        .menu-item-overlay.pressed {
-            opacity: .5;
-        }
+            .menu-item-overlay.pressed {
+                opacity: .5;
+            }
 
         #name {
             color: white;
@@ -138,13 +126,13 @@
             border-color: #F25022;
         }
 
-            .menu-item-container:hover #about {
-                background: #F25022;
-            }
+        .menu-item-container:hover #about, #about.solid-background, #about.pressed {
+            background: #F25022;
+        }
 
-            #about.active img {
-                background: #F25022;
-            }
+        #about.active img {
+            background: #F25022;
+        }
 
         #projects-container {
             left: 33.33%;
@@ -154,13 +142,13 @@
             border-color: #7FBA00;
         }
 
-            .menu-item-container:hover #projects {
-                background: #7FBA00;
-            }
+        .menu-item-container:hover #projects, #projects.solid-background, #projects.pressed {
+            background: #7FBA00;
+        }
 
-            #projects.active img {
-                background: #7FBA00;
-            }
+        #projects.active img {
+            background: #7FBA00;
+        }
 
         #contact-container {
             left: 66.66%;
@@ -170,13 +158,13 @@
             border-color: #00A3EE;
         }
 
-            .menu-item-container:hover #contact {
-                background: #00A3EE;
-            }
+        .menu-item-container:hover #contact, #contact.solid-background, #contact.pressed {
+            background: #00A3EE;
+        }
 
-            #contact.active img {
-                background: #00A3EE;
-            }
+        #contact.active img {
+            background: #00A3EE;
+        }
 
         @media (min-width: 2560px) {
             h1 {
@@ -231,15 +219,19 @@
         function init() {
 
             var mouseDownStartTime;
+            var menuItemEventHistory = [];
+            var buttonIsPressed = false;
 
             $(".menu-item-overlay").mousedown(function (e) {
                 e.preventDefault();
-
-                $siblingMenuItem = $(this).siblings(".menu-item");
+                buttonIsPressed = true;
+                var $that = $(this);
+                $siblingMenuItem = $that.siblings(".menu-item");
+                menuItemEventHistory.push($that.add($siblingMenuItem));
                 $(".menu-item").each(function () {
                     $this = $(this);
                     if ($this.is($siblingMenuItem)) {
-                        $this.addClass("active");
+                        $this.addClass("active").addClass("solid-background");
                     } else {
                         $this.removeClass("active");
                     }
@@ -249,21 +241,30 @@
                 $siblingMenuItem.add(this).addClass("pressed");
             });
 
+            //.hover(function () {
+            //    $(this).css("display", "inline");
+            //}, function () {
+            //    $(this).css("display", "none");
+            //});
+
             $(window).mouseup(function () {
+                if (!buttonIsPressed || menuItemEventHistory.length < 1)
+                    return;
+
                 var timeSinceMouseDown = (new Date()).getTime() - mouseDownStartTime.getTime();
 
-                $(".menu-item, .menu-item-overlay").removeClass("pressed");
-                return;
-
                 if (timeSinceMouseDown > 100) {
-                    $(".menu-item, .menu-item-overlay").removeClass("pressed");
-                    setTimeout(function () {
-                        $(".menu-item, .menu-item-overlay");
-                    }, 500);
+                    menuItemEventHistory.splice(0, 1)[0].removeClass("pressed").one('webkitTransitionEnd oTransitionEnd msTransitionEnd transitionend', function (ee) {
+                        $(this).removeClass("solid-background");
+                        console.log("hello");
+                    });
                 } else {
                     setTimeout(function () {
-                        $(".menu-item, .menu-item-overlay").removeClass("pressed");
-                    }, 100 - timeSinceMouseDown);
+                        menuItemEventHistory.splice(0, 1)[0].removeClass("pressed").one('webkitTransitionEnd oTransitionEnd msTransitionEnd transitionend', function (ee) {
+                            $(this).removeClass("solid-background");
+                            console.log("hello");
+                        });
+                    }, 120 - timeSinceMouseDown);
                 }
 
 
