@@ -37,16 +37,16 @@
         }
 
         .social {
-            text-align: center;
+            /*text-align: center;*/
         }
 
         .social-icon {
-            width: 50px;
+            margin-top: -5px;
+            width: 60px;
+            float: left;
         }
 
         .social-header {
-            margin-top: 25px;
-            margin-bottom: -10px;
             font-size: 1.4em;
         }
 
@@ -54,15 +54,29 @@
             color: gray;
         }
 
-        .social-container {
+        .social-link:hover {
+            text-decoration: none;
+            cursor: pointer;
         }
+
+        .social-container {
+            padding-top: 10px;
+            padding-bottom: 10px;
+            background-color: #EEEEEE;
+            -webkit-transition: background-color linear .5s;
+        }
+
+            .social-container:hover {
+                background-color: #D1DDEB;
+                -webkit-transition: background-color linear 0s;
+            }
 
         .cleared {
             clear: both;
         }
 
         #email {
-            margin-left: -8px;
+            /*margin-left: -8px;*/
         }
     </style>
 
@@ -88,29 +102,35 @@
         </div>
         <hr />
         <div class="row">
-            <div class="col-md-2">
+            <div class="col-md-3">
                 <h3>Connect</h3>
             </div>
             <div class="col-md-3 social">
-                <div class="social-container">
-                    <img src="Images/appbar.email.minimal.svg" class="social-icon" />
-                    <span class="social-header">Email</span>
-                    <div id="email" class="social-username">contact@nathanfriend.com</div>
-                </div>
+                <a class="social-link" href="mailto:contact@nathanfriend.com">
+                    <div class="social-container">
+                        <img src="Images/appbar.email.minimal.svg" class="social-icon" />
+                        <div class="social-header">Email</div>
+                        <div id="email" class="social-username">contact@nathanfriend.com</div>
+                    </div>
+                </a>
             </div>
             <div class="col-md-3 social">
-                <div class="social-container">
-                    <img src="Images/appbar.social.linkedin.svg" class="social-icon" />
-                    <span class="social-header">LinkedIn</span>
-                    <div class="social-username">nfriend</div>
-                </div>
+                <a class="social-link" href="http://www.linkedin.com/in/nfriend" target="_blank">
+                    <div class="social-container">
+                        <img src="Images/appbar.social.linkedin.svg" class="social-icon" />
+                        <span class="social-header">LinkedIn</span>
+                        <div class="social-username">nfriend</div>
+                    </div>
+                </a>
             </div>
             <div class="col-md-3 social">
-                <div class="social-container">
-                    <img src="Images/appbar.social.facebook.svg" class="social-icon" />
-                    <span class="social-header">Facebook</span>
-                    <div class="social-username">nathan.friend</div>
-                </div>
+                <a class="social-link" href="https://www.facebook.com/nathan.friend" target="_blank">
+                    <div class="social-container">
+                        <img src="Images/appbar.social.facebook.svg" class="social-icon" />
+                        <span class="social-header">Facebook</span>
+                        <div class="social-username">nathan.friend</div>
+                    </div>
+                </a>
             </div>
         </div>
         <hr />
