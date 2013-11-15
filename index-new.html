@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -126,13 +126,13 @@
             border-color: #F25022;
         }
 
-        .menu-item-container:hover #about, #about.solid-background, #about.pressed {
-            background: #F25022;
-        }
+            .menu-item-container:hover #about, #about.pressed, #about.active {
+                background: #F25022;
+            }
 
-        #about.active img {
+        /*#about.active img {
             background: #F25022;
-        }
+        }*/
 
         #projects-container {
             left: 33.33%;
@@ -142,13 +142,13 @@
             border-color: #7FBA00;
         }
 
-        .menu-item-container:hover #projects, #projects.solid-background, #projects.pressed {
-            background: #7FBA00;
-        }
+            .menu-item-container:hover #projects, #projects.pressed, #projects.active {
+                background: #7FBA00;
+            }
 
-        #projects.active img {
+        /*#projects.active img {
             background: #7FBA00;
-        }
+        }*/
 
         #contact-container {
             left: 66.66%;
@@ -158,12 +158,39 @@
             border-color: #00A3EE;
         }
 
-        .menu-item-container:hover #contact, #contact.solid-background, #contact.pressed {
+            .menu-item-container:hover #contact, #contact.pressed, #contact.active {
+                background: #00A3EE;
+            }
+
+        /*#contact.active img {
             background: #00A3EE;
+        }*/
+
+
+        .content-container {
+            /*background: green;*/
+            height: 100%;
+            width: 960px;
+            margin-left: -480px;
+            left: 50%;
+            position: absolute;
+            text-align:center;
         }
 
-        #contact.active img {
-            background: #00A3EE;
+        .content-item {
+            float: left;
+            height: 100%;
+            padding-top:200px;
+            font-size:1.2em;
+        }
+
+        .content-item img {
+            width: 40%;
+            margin-bottom: -30px;
+        }
+
+        .col-4 {
+            width: 33%;
         }
 
         @media (min-width: 2560px) {
@@ -213,63 +240,62 @@
 
     <script src="js/jquery-1.10.2.min.js"></script>
 
+    <!--[if IE 9]>
+        <script type="text/javascript">
+            window.isIE9 = true;
+        </script>
+    <![endif]-->
+
     <script>
-        $(init);
+        /*global $*/
+        /*global init*/
+        /*global window*/
+        /*global console*/
+        /*global setTimeout*/
 
-        function init() {
+        (function () {
+            'use strict';
+            $(init);
 
-            var mouseDownStartTime;
-            var menuItemEventHistory = [];
-            var buttonIsPressed = false;
+            function init() {
 
-            $(".menu-item-overlay").mousedown(function (e) {
-                e.preventDefault();
-                buttonIsPressed = true;
-                var $that = $(this);
-                $siblingMenuItem = $that.siblings(".menu-item");
-                menuItemEventHistory.push($that.add($siblingMenuItem));
-                $(".menu-item").each(function () {
-                    $this = $(this);
-                    if ($this.is($siblingMenuItem)) {
-                        $this.addClass("active").addClass("solid-background");
-                    } else {
-                        $this.removeClass("active");
-                    }
-                });
-
-                mouseDownStartTime = new Date();
-                $siblingMenuItem.add(this).addClass("pressed");
-            });
-
-            //.hover(function () {
-            //    $(this).css("display", "inline");
-            //}, function () {
-            //    $(this).css("display", "none");
-            //});
-
-            $(window).mouseup(function () {
-                if (!buttonIsPressed || menuItemEventHistory.length < 1)
-                    return;
-
-                var timeSinceMouseDown = (new Date()).getTime() - mouseDownStartTime.getTime();
-
-                if (timeSinceMouseDown > 100) {
-                    menuItemEventHistory.splice(0, 1)[0].removeClass("pressed").one('webkitTransitionEnd oTransitionEnd msTransitionEnd transitionend', function (ee) {
-                        $(this).removeClass("solid-background");
-                        console.log("hello");
-                    });
+                if (window.isIE9) {
+                    console.log("isIE9");
+                    $(".menu-item-overlay").css("background", "rgba(0,0,0,0)");
                 } else {
-                    setTimeout(function () {
-                        menuItemEventHistory.splice(0, 1)[0].removeClass("pressed").one('webkitTransitionEnd oTransitionEnd msTransitionEnd transitionend', function (ee) {
-                            $(this).removeClass("solid-background");
-                            console.log("hello");
-                        });
-                    }, 120 - timeSinceMouseDown);
+                    console.log("not IE9");
                 }
 
+                window.mouseDownStartTime = new Date();
+                window.lastItemMouseDown = [];
 
-            });
-        };
+                $(".menu-item-overlay").mousedown(function (e) {
+                    console.log("here");
+                    e.preventDefault();
+                    var $that = $(this), $siblingMenuItem = $that.siblings(".menu-item");
+
+                    //$(".menu-item").not($siblingMenuItem).removeClass("active");
+                    //window.lastItemMouseDown = $that.add($siblingMenuItem);
+
+                    window.mouseDownStartTime = new Date();
+                    $siblingMenuItem.add(this).addClass("pressed");
+                });
+
+                $(window).mouseup(function () {
+                    var timeSinceMouseDown = (new Date()).getTime() - window.mouseDownStartTime.getTime();
+
+                    if (timeSinceMouseDown > 100) {
+                        $(".menu-item:not(.pressed)").removeClass("active");
+                        $(".pressed").addClass("active").removeClass("pressed");
+                    } else {
+                        setTimeout(function () {
+                            $(".menu-item:not(.pressed)").removeClass("active");
+                            $(".pressed").addClass("active").removeClass("pressed");
+                        }, 120 - timeSinceMouseDown);
+                    }
+                });
+            }
+        }());
     </script>
 
 </head>
@@ -300,6 +326,24 @@
                 <div class="menu-item-overlay"></div>
             </div>
         </div>
+    </div>
+    <div class="content-container">
+        <!--<div class="content-item col-4">
+            <img src="images/appbar.location.round.svg" />
+            <p>I live and work in Des Moines, Iowa.</p>
+        </div>
+        <div class="content-item col-4">
+            <img src="images/appbar.clothes.tie.svg" />
+            <p>I work as a Software Developer for Pioneer Hi-Bred, developing research applications using Windows Presentation Foundation (WPF).</p>
+        </div>
+        <div class="content-item col-4">
+            <img src="images/appbar.music.svg" />
+            <p>I play the cello and enjoy studio recording.</p>
+        </div>-->
+        <!--<img src="images/appbar.information.circle.svg" style="float: left; background: black; top: 200px; position: relative; width: 10%;" />
+        <div style="height:300px; width: 5px; background: black; float:left; margin: 30px; margin-top:100px;" />-->
+        <p style="float:left; text-align:left; font-size: 1.7em; margin: 100px; margin-top:200px;">Welcome. My name is Nathan Friend and I do software development and play the cello. I'm currently a Software Developer at DuPont Pioneer, where I develop research applications using Windows Presentation Foundation (WPF).</p>
+
     </div>
 </body>
 </html>
