@@ -20,6 +20,17 @@
             font-family: 'Open Sans', sans-serif;
         }
 
+        a {
+            -webkit-transition: background-color linear .5s;
+        }
+
+            a:hover {
+                cursor: pointer;
+                text-decoration: none;
+                background-color: #D1DDEB;
+                -webkit-transition: none;
+            }
+
         p {
             font-size: 1.2em;
         }
@@ -47,7 +58,8 @@
         }
 
         .accented {
-            color: #5076A3;
+            /*color: #5076A3;*/
+            color: #428BCA;
         }
 
         .subtitle {
@@ -66,8 +78,8 @@
 
         .heading-subtitle {
             margin-bottom: 5px;
-        } 
-        
+        }
+
         .social-header {
             font-size: 1.4em;
         }
@@ -78,11 +90,6 @@
 
         .quiet {
             color: gray;
-        }
-
-        .social-link:hover {
-            text-decoration: none;
-            cursor: pointer;
         }
 
         .social-container {
@@ -230,7 +237,9 @@
                 <h2 id="education-subtitle" class="subtitle">Education</h2>
             </div>
             <div class="col-md-9 col-sm-8">
-                <h3 class="heading">Dordt College</h3>
+                <h3>
+                    <a href="http://dordt.edu/">Dordt College</a>
+                </h3>
                 <div class="quiet heading-subtitle">498 4th Ave NE, Sioux Center, IA 51250</div>
                 <p>Bachelor or Arts in Computer Science: System Administration<br />Minor: Cello Performance</p>
             </div>
@@ -240,12 +249,12 @@
         <hr class="no-top-margin" />
 
         <div class="row" style="margin-bottom:10px;">
-            
+
             <div class="col-md-3 col-sm-4">
                 <h2 id="work-experience-subtitle" class="subtitle">Work Experience</h2>
             </div>
 
-            <div class="col-md-9 col-sm-8">
+            <a class="col-md-9 col-sm-8">
                 <h3>DuPont Pioneer</h3>
                 <div class="quiet heading-subtitle">Software Developer | May 2013 - current</div>
                 <div class="row">
@@ -256,18 +265,22 @@
                     <p class="col-md-2 col-xs-4" style=" margin:0;">Technologies:</p>
                     <p class="col-md-10 col-xs-8">WPF, Entity Framework</p>
                 </div>
-            </div>
+            </a>
 
             <div class="col-md-3 col-sm-4 hidden-xs"></div>
             <div class="col-md-6 col-sm-8">
-                <hr class="sub-hr"/>
+                <hr class="sub-hr" />
             </div>
             <div class="col-md-3 col-sm-4 hidden-xs hidden-sm"></div>
             <div class="clearfix visible-md visible-lg"></div>
             <div class="col-md-3 col-sm-4 hidden-xs"></div>
 
             <div class="col-md-9 col-sm-8">
-                <h3>Visual Logic Group</h3>
+                <h3>
+                    <a href="http://vlgux.com/">
+                        Visual Logic Group
+                    </a>
+                </h3>
                 <div class="quiet heading-subtitle">UX Development Intern | January 2013 - May 2013</div>
                 <div class="row">
                     <p class="col-md-2 col-xs-4" style="margin: 0;">What I did:</p>
@@ -281,14 +294,18 @@
 
             <div class="col-md-3 col-sm-4 hidden-xs"></div>
             <div class="col-md-6 col-sm-8">
-                <hr class="sub-hr"/>
+                <hr class="sub-hr" />
             </div>
             <div class="col-md-3 col-sm-4 hidden-xs hidden-sm"></div>
             <div class="clearfix visible-md visible-lg"></div>
             <div class="col-md-3 col-sm-4 hidden-xs"></div>
 
             <div class="col-md-9 col-sm-8">
-                <h3>DuPont Pioneer</h3>
+                <h3>
+                    <a href="http://www.pioneer.com/">
+                        DuPont Pioneer
+                    </a>
+                </h3>
                 <div class="quiet heading-subtitle">Softwre Development Intern | May 2012 - August 2014</div>
                 <div class="row">
                     <p class="col-md-2 col-xs-4" style="margin: 0;">What I did:</p>
