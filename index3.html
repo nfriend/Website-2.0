@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -7,8 +7,8 @@
 
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <link href="bootstrap-3.0.2-dist/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href='http://fonts.googleapis.com/css?family=Arapey:400italic,400' rel='stylesheet' type='text/css' />
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'>
+    <!--<link href='http://fonts.googleapis.com/css?family=Arapey:400italic,400' rel='stylesheet' type='text/css' />-->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,300,400,600' rel='stylesheet' type='text/css'>
 
     <style type="text/css">
         body {
@@ -28,16 +28,34 @@
             font-size: 5em;
         }
 
+        h2 {
+            font-size: 24px;
+        }
+
+        h3 {
+            font-size: 24px;
+            margin-top: 0;
+            margin-bottom: 5px;
+        }
+
         hr {
             border-top: 1px solid #ddd;
+        }
+
+        ht.no-top-margin {
+            margin-top: 0;
         }
 
         .accented {
             color: #5076A3;
         }
 
+        .subtitle {
+            margin-top: 0;
+        }
+
         .social {
-            /*text-align: center;*/
+            padding-bottom: 25px;
         }
 
         .social-icon {
@@ -46,11 +64,19 @@
             float: left;
         }
 
+        .heading-subtitle {
+            margin-bottom: 5px;
+        } 
+        
         .social-header {
             font-size: 1.4em;
         }
 
-        .social-username {
+        .work-description {
+            margin-top: 0px;
+        }
+
+        .quiet {
             color: gray;
         }
 
@@ -62,21 +88,44 @@
         .social-container {
             padding-top: 10px;
             padding-bottom: 10px;
-            background-color: #EEEEEE;
+            background-color: #E6E6E6;
             -webkit-transition: background-color linear .5s;
+            min-height: 68px;
         }
 
             .social-container:hover {
                 background-color: #D1DDEB;
-                -webkit-transition: background-color linear 0s;
+                -webkit-transition: none;
             }
 
         .cleared {
             clear: both;
         }
 
-        #email {
-            /*margin-left: -8px;*/
+        #header-spacer {
+            height: 100px;
+        }
+
+        @media (max-width: 767px) {
+
+            .subtitle {
+                font-size: 2.5em;
+                text-align: center;
+                margin-bottom: 20px;
+                margin-top: 0px;
+            }
+
+            #header-spacer {
+                height: 50px;
+            }
+
+            #title {
+                text-align: center;
+            }
+
+            hr.sub-hr {
+                width: 50%;
+            }
         }
     </style>
 
@@ -85,55 +134,176 @@
 </head>
 <body>
     <div class="container">
-        <div class="row" style="height: 100px;"></div>
+        <div class="row" id="header-spacer"></div>
         <div class="row">
             <div class="col-md-12">
-                <h1>
+                <h1 id="title">
                     <span style="margin-right: -10px;">Nathan</span>
                     <span class="accented">Friend</span>
                 </h1>
             </div>
         </div>
-        <hr />
+
+        <hr class="no-top-margin" />
+
         <div class="row">
             <div class="col-md-12">
-                <p>Welcome. My name is Nathan Friend and I do software development and play the cello. I'm currently a Software Developer at DuPont Pioneer, where I develop research applications using Windows Presentation Foundation (WPF).</p>
+                <p>Welcome. My name is Nathan Friend and I do develop software and play the cello. I'm currently a Software Developer at DuPont Pioneer, where I design and develop research applications using Windows Presentation Foundation (WPF).</p>
             </div>
         </div>
-        <hr />
+
+        <hr style="margin-top:15px;" />
+
+        <!--connect-->
         <div class="row">
-            <div class="col-md-3">
-                <h3>Connect</h3>
+            <div class="col-md-3 col-sm-4">
+                <h2 class="subtitle">Connect</h2>
             </div>
-            <div class="col-md-3 social">
+            <div class="col-md-3 col-sm-4 social">
                 <a class="social-link" href="mailto:contact@nathanfriend.com">
                     <div class="social-container">
                         <img src="Images/appbar.email.minimal.svg" class="social-icon" />
                         <div class="social-header">Email</div>
-                        <div id="email" class="social-username">contact@nathanfriend.com</div>
+                        <div class="quiet email visible-sm visible-md" style="font-size: .8em; margin-top:2px;">contact@nathanfriend.com</div>
+                        <div class="quiet email visible-xs visible-lg">contact@nathanfriend.com</div>
                     </div>
                 </a>
             </div>
-            <div class="col-md-3 social">
+            <div class="col-md-3 col-sm-4 social">
                 <a class="social-link" href="http://www.linkedin.com/in/nfriend" target="_blank">
                     <div class="social-container">
                         <img src="Images/appbar.social.linkedin.svg" class="social-icon" />
                         <span class="social-header">LinkedIn</span>
-                        <div class="social-username">nfriend</div>
+                        <div class="quiet">nfriend</div>
                     </div>
                 </a>
             </div>
-            <div class="col-md-3 social">
+            <div class="clearfix visible-sm"></div>
+            <div class="col-sm-4 visible-sm"></div>
+            <div class="col-md-3 col-sm-4 social">
                 <a class="social-link" href="https://www.facebook.com/nathan.friend" target="_blank">
                     <div class="social-container">
                         <img src="Images/appbar.social.facebook.svg" class="social-icon" />
                         <span class="social-header">Facebook</span>
-                        <div class="social-username">nathan.friend</div>
+                        <div class="quiet">nathan.friend</div>
+                    </div>
+                </a>
+            </div>
+            <div class="clearfix visible-md"></div>
+            <div class="col-md-3 visible-md visible-lg"></div>
+            <div class="col-md-3 col-sm-4 social">
+                <a class="social-link" href="https://www.facebook.com/nathan.friend" target="_blank">
+                    <div class="social-container">
+                        <img src="Images/appbar.social.twitter.svg" class="social-icon" />
+                        <span class="social-header">Twitter</span>
+                        <div class="quiet">NathanAFriend</div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-sm-4 visible-sm"></div>
+            <div class="col-md-3 col-sm-4 social">
+                <a class="social-link" href="https://plus.google.com/100251709863074180329/posts" target="_blank">
+                    <div class="social-container">
+                        <img src="Images/appbar.googleplus.svg" class="social-icon" />
+                        <span class="social-header">Google+</span>
+                        <div class="quiet">Nathan Friend</div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3 col-sm-4 social">
+                <a class="social-link" href="https://github.com/nfriend" target="_blank">
+                    <div class="social-container">
+                        <img src="Images/appbar.social.github.octocat.solid.svg" class="social-icon" />
+                        <span class="social-header">GitHub</span>
+                        <div class="quiet">nfriend</div>
                     </div>
                 </a>
             </div>
         </div>
-        <hr />
+        <!--/connect-->
+
+        <hr class="no-top-margin" />
+
+        <!--education-->
+        <div class="row" style="margin-bottom:10px;">
+            <div class="col-md-3 col-sm-4">
+                <h2 id="education-subtitle" class="subtitle">Education</h2>
+            </div>
+            <div class="col-md-9 col-sm-8">
+                <h3 class="heading">Dordt College</h3>
+                <div class="quiet heading-subtitle">498 4th Ave NE, Sioux Center, IA 51250</div>
+                <p>Bachelor or Arts in Computer Science: System Administration<br />Minor: Cello Performance</p>
+            </div>
+        </div>
+        <!--/education-->
+
+        <hr class="no-top-margin" />
+
+        <div class="row" style="margin-bottom:10px;">
+            
+            <div class="col-md-3 col-sm-4">
+                <h2 id="work-experience-subtitle" class="subtitle">Work Experience</h2>
+            </div>
+
+            <div class="col-md-9 col-sm-8">
+                <h3>DuPont Pioneer</h3>
+                <div class="quiet heading-subtitle">Software Developer | May 2013 - current</div>
+                <div class="row">
+                    <p class="col-md-2 col-xs-4" style="margin: 0;">What I do:</p>
+                    <p class="col-md-10 col-xs-8" style="margin: 0;">Design, develop, and support business application for soybean research stations.</p>
+                </div>
+                <div class="row">
+                    <p class="col-md-2 col-xs-4" style=" margin:0;">Technologies:</p>
+                    <p class="col-md-10 col-xs-8">WPF, Entity Framework</p>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-4 hidden-xs"></div>
+            <div class="col-md-6 col-sm-8">
+                <hr class="sub-hr"/>
+            </div>
+            <div class="col-md-3 col-sm-4 hidden-xs hidden-sm"></div>
+            <div class="clearfix visible-md visible-lg"></div>
+            <div class="col-md-3 col-sm-4 hidden-xs"></div>
+
+            <div class="col-md-9 col-sm-8">
+                <h3>Visual Logic Group</h3>
+                <div class="quiet heading-subtitle">UX Development Intern | January 2013 - May 2013</div>
+                <div class="row">
+                    <p class="col-md-2 col-xs-4" style="margin: 0;">What I did:</p>
+                    <p class="col-md-10 col-xs-8" style="margin: 0;">Worked as part of a creative team in prototyping a web application for John Deere.</p>
+                </div>
+                <div class="row">
+                    <p class="col-md-2 col-xs-4" style=" margin:0;">Technologies:</p>
+                    <p class="col-md-10 col-xs-8">JavaScript, HTML5, CSS3</p>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-4 hidden-xs"></div>
+            <div class="col-md-6 col-sm-8">
+                <hr class="sub-hr"/>
+            </div>
+            <div class="col-md-3 col-sm-4 hidden-xs hidden-sm"></div>
+            <div class="clearfix visible-md visible-lg"></div>
+            <div class="col-md-3 col-sm-4 hidden-xs"></div>
+
+            <div class="col-md-9 col-sm-8">
+                <h3>DuPont Pioneer</h3>
+                <div class="quiet heading-subtitle">Softwre Development Intern | May 2012 - August 2014</div>
+                <div class="row">
+                    <p class="col-md-2 col-xs-4" style="margin: 0;">What I did:</p>
+                    <p class="col-md-10 col-xs-8" style="margin: 0;">Conceptualized and implemented internal web applications, including an alert notification application for DuPont Pioneer’s library department</p>
+                </div>
+                <div class="row">
+                    <p class="col-md-2 col-xs-4" style=" margin:0;">Technologies:</p>
+                    <p class="col-md-10 col-xs-8">JavaScript, HTML, CSS, C#, SQL</p>
+                </div>
+            </div>
+        </div>
+        <!--/education-->
+
+        <hr class="no-top-margin" />
+
     </div>
 </body>
 </html>
