@@ -1,0 +1,151 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    background: #F7F7F7;
+}
+
+h1, h2, h3, h4, h5, .h1, .h2, .h3, .h4, .h5 {
+    font-family: 'Open Sans', sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+    a:hover {
+        text-decoration: none;
+    }
+
+    a > * {
+        /*background-color: #EAEAEA;*/
+        -webkit-transition: background linear .5s, color linear .5s;
+        -moz-transition: background linear .5s, color linear .5s;
+        -o-transition: background linear .5s, color linear .5s;
+        transition: background linear .5s, color linear .5s;
+    }
+
+    a:hover > * {
+        background-color: #D1DDEB;
+        -webkit-transition: background linear 0s, color linear 0s;
+        -moz-transition: background linear 0s, color linear 0s;
+        -o-transition: background linear 0s, color linear 0s;
+        transition: background linear 0s, color linear 0s;
+    }
+
+p {
+    font-size: 1.2em;
+}
+
+h1 {
+    font-size: 5em;
+}
+
+h2 {
+    font-size: 24px;
+}
+
+h3 {
+    font-size: 24px;
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+hr {
+    border-top: 1px solid #ddd;
+}
+
+.no-top-margin {
+    margin-top: 0;
+}
+
+.accented {
+    /*color: #5076A3;*/
+    color: #428BCA;
+}
+
+.subtitle {
+    margin-top: 10px;
+}
+
+.social {
+    padding-bottom: 25px;
+}
+
+.social-icon {
+    margin-top: -5px;
+    width: 60px;
+    float: left;
+}
+
+.heading-subtitle {
+    margin-bottom: 5px;
+}
+
+.social-header {
+    font-size: 1.4em;
+}
+
+.work-description {
+    margin-top: 0px;
+}
+
+.quiet {
+    color: gray;
+}
+
+.ignore-link-color {
+    color: black;
+}
+
+.social-container {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    min-height: 68px;
+}
+
+.link-item-container {
+    padding: 10px;
+}
+
+.initial-flash {
+    background: #E6E6E6;
+}
+
+.cleared {
+    clear: both;
+}
+
+.project {
+    padding-bottom: 25px;
+}
+
+#header-spacer {
+    height: 100px;
+}
+
+@media (max-width: 991px) {
+    a > * {
+        background-color: #E6E6E6;
+    }
+}
+
+@media (max-width: 767px) {
+
+    .subtitle {
+        font-size: 2.5em;
+        text-align: center;
+        margin-bottom: 20px;
+        margin-top: 0px;
+    }
+
+    #header-spacer {
+        height: 50px;
+    }
+
+    #title {
+        text-align: center;
+    }
+
+    hr.sub-hr {
+        width: 50%;
+    }
+}
