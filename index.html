@@ -168,6 +168,20 @@
     <script src="js/jquery-1.10.2.min.js"></script>
     <script src="bootstrap-3.0.2-dist/dist/js/bootstrap.min.js"></script>
 
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-36351579-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+
+    </script>
+
     <script>
         $(init);
 
@@ -194,7 +208,7 @@
 
         <div class="row">
             <div class="col-md-12">
-                <p>Welcome. My name is Nathan Friend and I develop software and play the cello. I'm currently a software developer at DuPont Pioneer, where I design and develop research applications using &nbsp;<abbr title="Windows Presentation Foundation" class="initialism">WPF</abbr>.</p>
+                <p>Welcome. I am a software developer and cellist based out of Des Moines, IA. I'm currently a software developer at DuPont Pioneer, where I design and develop research applications using &nbsp;<abbr title="Windows Presentation Foundation" class="initialism">WPF</abbr>.</p>
             </div>
         </div>
 
@@ -208,7 +222,7 @@
             <div class="col-md-3 col-sm-4 social">
                 <a class="social-link" href="mailto:contact@nathanfriend.com">
                     <div class="social-container initial-flash">
-                        <img src="Images/appbar.email.minimal.svg" class="social-icon" />
+                        <img src="img/appbar.email.minimal.svg" class="social-icon" />
                         <div class="social-header">Email</div>
                         <div class="quiet email visible-sm visible-md" style="font-size: .8em; margin-top:2px;">contact@nathanfriend.com</div>
                         <div class="quiet email visible-xs visible-lg">contact@nathanfriend.com</div>
@@ -216,9 +230,9 @@
                 </a>
             </div>
             <div class="col-md-3 col-sm-4 social">
-                <a class="social-link" href="http://www.linkedin.com/in/nfriend" target="_blank">
+                <a class="social-link" href="http://www.linkedin.com/in/nfriend">
                     <div class="social-container initial-flash">
-                        <img src="Images/appbar.social.linkedin.svg" class="social-icon" />
+                        <img src="img/appbar.social.linkedin.svg" class="social-icon" />
                         <span class="social-header">LinkedIn</span>
                         <div class="quiet">nfriend</div>
                     </div>
@@ -227,9 +241,9 @@
             <div class="clearfix visible-sm"></div>
             <div class="col-sm-4 visible-sm"></div>
             <div class="col-md-3 col-sm-4 social">
-                <a class="social-link" href="https://www.facebook.com/nathan.friend" target="_blank">
+                <a class="social-link" href="https://www.facebook.com/nathan.friend">
                     <div class="social-container initial-flash">
-                        <img src="Images/appbar.social.facebook.svg" class="social-icon" />
+                        <img src="img/appbar.social.facebook.svg" class="social-icon" />
                         <span class="social-header">Facebook</span>
                         <div class="quiet">nathan.friend</div>
                     </div>
@@ -238,9 +252,9 @@
             <div class="clearfix visible-md"></div>
             <div class="col-md-3 visible-md visible-lg"></div>
             <div class="col-md-3 col-sm-4 social">
-                <a class="social-link" href="https://www.facebook.com/nathan.friend" target="_blank">
+                <a class="social-link" href="https://twitter.com/NathanAFriend">
                     <div class="social-container initial-flash">
-                        <img src="Images/appbar.social.twitter.svg" class="social-icon" />
+                        <img src="img/appbar.social.twitter.svg" class="social-icon" />
                         <span class="social-header">Twitter</span>
                         <div class="quiet">NathanAFriend</div>
                     </div>
@@ -248,18 +262,18 @@
             </div>
             <div class="col-sm-4 visible-sm"></div>
             <div class="col-md-3 col-sm-4 social">
-                <a class="social-link" href="https://plus.google.com/100251709863074180329/posts" target="_blank">
+                <a class="social-link" href="https://plus.google.com/100251709863074180329/posts">
                     <div class="social-container initial-flash">
-                        <img src="Images/appbar.googleplus.svg" class="social-icon" />
+                        <img src="img/appbar.googleplus.svg" class="social-icon" />
                         <span class="social-header">Google+</span>
                         <div class="quiet">Nathan Friend</div>
                     </div>
                 </a>
             </div>
             <div class="col-md-3 col-sm-4 social">
-                <a class="social-link" href="https://github.com/nfriend" target="_blank">
+                <a class="social-link" href="https://github.com/nfriend">
                     <div class="social-container initial-flash">
-                        <img src="Images/appbar.social.github.octocat.solid.svg" class="social-icon" />
+                        <img src="img/appbar.social.github.octocat.solid.svg" class="social-icon" />
                         <span class="social-header">GitHub</span>
                         <div class="quiet">nfriend</div>
                     </div>
@@ -268,7 +282,7 @@
         </div>
         <!--/connect-->
 
-        <hr class="no-top-margin"/>
+        <hr class="no-top-margin" />
 
         <!--projects-->
         <div class="row">
@@ -280,7 +294,7 @@
             <div class="col-md-9 col-sm-8">
                 <div class="row">
                     <div class="col-md-6 col-sm-12 project">
-                        <a href="http://nathanfriend.com/Theremin/">
+                        <a href="http://nathanfriend.com/theremin/">
                             <div class="link-item-container initial-flash">
                                 <h3>Themerin</h3>
                                 <div class="quiet heading-subtitle">github.com/nfriend/Theremin</div>
@@ -290,11 +304,14 @@
                     </div>
 
                     <div class="col-md-6 col-sm-12 project">
-                        <a href="http://nathanfriend.com/TutorialOverlay/">
+                        <a href="https://github.com/nfriend/TutorialOverlay">
                             <div class="link-item-container initial-flash">
                                 <h3>Tutorial Overlay</h3>
                                 <div class="quiet heading-subtitle">github.com/nfriend/TutorialOverlay</div>
-                                <p class="ignore-link-color">A simple way to add "tutorial" overlays to existing WPF applications</p>
+                                <p class="ignore-link-color">
+                                    A simple way to add "tutorial" overlays to existing WPF applications
+                                    <span class="visible-md"><br /></span>
+                                </p>
                             </div>
                         </a>
                     </div>
@@ -306,7 +323,7 @@
             <div class="col-md-9 col-sm-8">
                 <div class="row">
                     <div class="col-md-6 col-sm-12 project">
-                        <a href="http://nathanfriend.com/Rook/">
+                        <a href="http://nathanfriend.com/rook/">
                             <div class="link-item-container initial-flash">
                                 <h3>Rook</h3>
                                 <div class="quiet heading-subtitle">github.com/nfriend/Rook</div>
@@ -316,13 +333,13 @@
                     </div>
 
                     <div class="col-md-6 col-sm-12 project">
-                        <a href="http://nathanfriend.com/Battleship/">
+                        <a href="http://nathanfriend.com/battleship/">
                             <div class="link-item-container initial-flash">
                                 <h3>Battleship</h3>
                                 <div class="quiet heading-subtitle">github.com/nfriend/Battleship</div>
                                 <p class="ignore-link-color">
                                     An online gameboard for multi-player Battleship
-                                    <span><br />&nbsp;</span>
+                                    <span class="visible-lg visible-md"><br /></span>
                                 </p>
                             </div>
                         </a>
@@ -332,7 +349,7 @@
         </div>
         <!--/projects-->
 
-        <hr class="no-top-margin"/>
+        <hr class="no-top-margin" />
 
         <!--education-->
         <div class="row" style="margin-bottom:10px;">
@@ -344,7 +361,7 @@
                     <div class="link-item-container initial-flash">
                         <h3>Dordt College</h3>
                         <div class="quiet heading-subtitle">498 4th Ave NE, Sioux Center, IA 51250</div>
-                        <p class="ignore-link-color">Bachelor or Arts in Computer Science: System Administration<br />Minor: Cello Performance</p>
+                        <p class="ignore-link-color">Bachelor of Arts in Computer Science: System Administration<br />Minor: Cello Performance</p>
                     </div>
                 </a>
             </div>
@@ -479,7 +496,7 @@
         </div>
         <!--/work experience-->
 
-        <hr />
+        <hr style="visibility:hidden" />
 
     </div>
 </body>
