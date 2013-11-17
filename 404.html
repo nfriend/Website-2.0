@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>404 - Page not found!</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link href="bootstrap-3.0.2-dist/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
+    <link href='css/stylesheet.min.css' rel="stylesheet" type="text/css" />
+
+    <!--[if lt IE 8]>
+        <script type="text/javascript">
+            window.isLessThanIE8 = true;
+        </script>
+    <![endif]-->
+    <!--[if lt IE 9]>
+        <script src="js/respond.min.js"></script>
+        <script type="text/javascript">
+            window.isLessThanIE9 = true;
+        </script>
+    <![endif]-->
+    <!--[if lt IE 10]>
+        <script type="text/javascript">
+            window.isLessThanIE10 = true;
+        </script>
+    <![endif]-->
+
+
+    <script src="js/jquery-1.10.2.min.js"></script>
+    <script src="bootstrap-3.0.2-dist/dist/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-36351579-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+
+    </script>
+
+    <script>
+        $(init);
+
+        function init() {
+
+            if (window.isLessThanIE8) {
+                $("#IE7warning").css("display", "inline");
+            }
+
+            //if svg is not supported, replace all img tags with non-svg source
+            if (window.isLessThanIE9) {
+                $("img").each(function () {
+                    $(this).attr("src", $(this).attr("fallbacksrc"));
+                });
+            }
+
+            setTimeout(function () {
+                $(".initial-flash").removeClass("initial-flash");
+            }, window.isLessThanIE10 ? 0 : 500);
+        }
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <div class="row" id="header-spacer"></div>
+
+        <div id="IE7warning" style="display:none;" class="row">
+            <div class="col-md-12">
+                <div class="alert alert-danger alert-dismissable">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <strong>Your browser is outdated.</strong> This site (and most of the internet) won't display properly until you <a href="http://google.com/chrome" style="text-decoration: underline;">upgrade</a>.
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <h1 id="title">
+                    <span style="margin-right: -10px;">Nathan</span>
+                    <span class="accented">Friend</span>
+                </h1>
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="hidden-xs" style="margin-top:10px;"><b>404</b> - Page not found!</h2>
+                <h2 class="visible-xs" style="margin-top:10px; text-align:center"><b>404</b> - Page not found!</h2>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <p class="hidden-xs" style="margin-top:10px;">
+                    If you're looking for something specific, feel free to email me:
+                    <a href="mailto:contact@nathanfriend.com">contact@nathanfriend.com</a>
+                </p>
+                <p class="visible-xs" style="margin-top:10px; text-align:center">
+                    If you're looking for something specific, feel free to email me:
+                    <a href="mailto:contact@nathanfriend.com">contact@nathanfriend.com</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

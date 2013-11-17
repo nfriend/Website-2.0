@@ -15,6 +15,10 @@ a {
         text-decoration: none;
     }
 
+    a:active {
+        text-decoration: none;
+    }
+
     a > * {
         /*background-color: #EAEAEA;*/
         -webkit-transition: background linear .5s, color linear .5s;
@@ -123,12 +127,15 @@ hr {
 }
 
 @media (max-width: 991px) {
-    a > * {
-        background-color: #E6E6E6;
+    #header-spacer {
+        height: 30px;
     }
 }
 
 @media (max-width: 767px) {
+    a > * {
+        background-color: #E6E6E6;
+    }
 
     .subtitle {
         font-size: 2.5em;
@@ -137,9 +144,9 @@ hr {
         margin-top: 0px;
     }
 
-    #header-spacer {
+    /*#header-spacer {
         height: 50px;
-    }
+    }*/
 
     #title {
         text-align: center;

@@ -4,13 +4,32 @@
 <head>
     <meta charset="utf-8" />
     <title>Nathan Friend</title>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <link href="bootstrap-3.0.2-dist/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <!--<link href='http://fonts.googleapis.com/css?family=Arapey:400italic,400' rel='stylesheet' type='text/css' />-->
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,300,400,600' rel='stylesheet' type='text/css'>
-    <link href='css/stylesheet.css' rel="stylesheet" type="text/css" />
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
+    <link href='css/stylesheet.min.css' rel="stylesheet" type="text/css" />
+
+    <!--[if lt IE 8]>
+        <script type="text/javascript">
+            window.isLessThanIE8 = true;
+        </script>
+    <![endif]-->
+    <!--[if lt IE 9]>
+        <script src="js/respond.min.js"></script>
+        <script type="text/javascript">
+            window.isLessThanIE9 = true;
+        </script>
+    <![endif]-->
+    <!--[if lt IE 10]>
+        <script type="text/javascript">
+            window.isLessThanIE10 = true;
+        </script>
+    <![endif]-->
+
 
     <script src="js/jquery-1.10.2.min.js"></script>
     <script src="bootstrap-3.0.2-dist/dist/js/bootstrap.min.js"></script>
@@ -33,9 +52,24 @@
         $(init);
 
         function init() {
+
+            //show outdated broser warning if IE7 or below
+            if (window.isLessThanIE8) {
+                $("#IE7warning").css("display", "inline");
+            }
+
+            //if svg is not supported, replace all img tags with non-svg source
+            if (window.isLessThanIE9) {
+                $("img").each(function () {
+                    $(this).attr("src", $(this).attr("fallbacksrc"));
+                });
+            }
+
+            //if transitions are supported, begin all links with an initial color 
+            //and fade out after .5 seconds
             setTimeout(function () {
                 $(".initial-flash").removeClass("initial-flash");
-            }, 500);
+            }, window.isLessThanIE10 ? 0 : 500);
         }
     </script>
 
@@ -43,6 +77,16 @@
 <body>
     <div class="container">
         <div class="row" id="header-spacer"></div>
+
+        <div id="IE7warning" style="display:none;" class="row">
+            <div class="col-md-12">
+                <div class="alert alert-danger alert-dismissable">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <strong>Your browser is outdated.</strong> This site (and most of the internet) won't display properly until you <a href="http://google.com/chrome" style="text-decoration: underline;">upgrade</a>.
+                </div>
+            </div>
+        </div>
+
         <div class="row">
             <div class="col-md-12">
                 <h1 id="title">
@@ -56,7 +100,7 @@
 
         <div class="row">
             <div class="col-md-12">
-                <p>Welcome. I am a software developer and cellist based out of Des Moines, IA. I'm currently a software developer at DuPont Pioneer, where I design and develop research applications using &nbsp;<abbr title="Windows Presentation Foundation" class="initialism">WPF</abbr>.</p>
+                <p>Welcome. I am a software developer and cellist based out of Des Moines, IA. I work at DuPont Pioneer, where I design and develop research applications using &nbsp;<abbr title="Windows Presentation Foundation" class="initialism">WPF</abbr>.</p>
             </div>
         </div>
 
@@ -70,7 +114,7 @@
             <div class="col-md-3 col-sm-4 social">
                 <a class="social-link" href="mailto:contact@nathanfriend.com">
                     <div class="social-container initial-flash">
-                        <img src="img/appbar.email.minimal.svg" class="social-icon" />
+                        <img src="img/appbar.email.minimal.svg" fallbacksrc="img/appbar.email.minimal.png" class="social-icon" />
                         <div class="social-header">Email</div>
                         <div class="quiet email visible-sm visible-md" style="font-size: .8em; margin-top:2px;">contact@nathanfriend.com</div>
                         <div class="quiet email visible-xs visible-lg">contact@nathanfriend.com</div>
@@ -80,7 +124,7 @@
             <div class="col-md-3 col-sm-4 social">
                 <a class="social-link" href="http://www.linkedin.com/in/nfriend">
                     <div class="social-container initial-flash">
-                        <img src="img/appbar.social.linkedin.svg" class="social-icon" />
+                        <img src="img/appbar.social.linkedin.svg" fallbacksrc="img/appbar.social.linkedin.png" class=" social-icon" />
                         <span class="social-header">LinkedIn</span>
                         <div class="quiet">nfriend</div>
                     </div>
@@ -91,7 +135,7 @@
             <div class="col-md-3 col-sm-4 social">
                 <a class="social-link" href="https://www.facebook.com/nathan.friend">
                     <div class="social-container initial-flash">
-                        <img src="img/appbar.social.facebook.svg" class="social-icon" />
+                        <img src="img/appbar.social.facebook.svg" fallbacksrc="img/appbar.social.facebook.png" class=" social-icon" />
                         <span class="social-header">Facebook</span>
                         <div class="quiet">nathan.friend</div>
                     </div>
@@ -102,7 +146,7 @@
             <div class="col-md-3 col-sm-4 social">
                 <a class="social-link" href="https://twitter.com/NathanAFriend">
                     <div class="social-container initial-flash">
-                        <img src="img/appbar.social.twitter.svg" class="social-icon" />
+                        <img src="img/appbar.social.twitter.svg" fallbacksrc="img/appbar.social.twitter.png" class="social-icon" />
                         <span class="social-header">Twitter</span>
                         <div class="quiet">NathanAFriend</div>
                     </div>
@@ -112,7 +156,7 @@
             <div class="col-md-3 col-sm-4 social">
                 <a class="social-link" href="https://plus.google.com/100251709863074180329/posts">
                     <div class="social-container initial-flash">
-                        <img src="img/appbar.googleplus.svg" class="social-icon" />
+                        <img src="img/appbar.googleplus.svg" fallbacksrc="img/appbar.googleplus.png" class="social-icon" />
                         <span class="social-header">Google+</span>
                         <div class="quiet">Nathan Friend</div>
                     </div>
@@ -121,7 +165,7 @@
             <div class="col-md-3 col-sm-4 social">
                 <a class="social-link" href="https://github.com/nfriend">
                     <div class="social-container initial-flash">
-                        <img src="img/appbar.social.github.octocat.solid.svg" class="social-icon" />
+                        <img src="img/appbar.social.github.octocat.solid.svg" fallbacksrc="img/appbar.social.github.octocat.solid.png" class="social-icon" />
                         <span class="social-header">GitHub</span>
                         <div class="quiet">nfriend</div>
                     </div>
@@ -144,7 +188,7 @@
                     <div class="col-md-6 col-sm-12 project">
                         <a href="http://nathanfriend.com/theremin/">
                             <div class="link-item-container initial-flash">
-                                <h3>Themerin</h3>
+                                <h3>Theremin</h3>
                                 <div class="quiet heading-subtitle">github.com/nfriend/Theremin</div>
                                 <p class="ignore-link-color">A musical instrument using Chrome, the HTML5 Web Audio API, and a Leap Motion controller</p>
                             </div>
@@ -218,11 +262,11 @@
 
         <hr />
 
-        <!--work experience-->
+        <!--experience-->
         <div class="row" style="margin-bottom:10px;">
 
             <div class="col-md-3 col-sm-4">
-                <h2 id="work-experience-subtitle" class="subtitle">Work Experience</h2>
+                <h2 id="experience-subtitle" class="subtitle">Experience</h2>
             </div>
 
             <div class="col-md-9 col-sm-8">
@@ -342,7 +386,7 @@
                 </a>
             </div>
         </div>
-        <!--/work experience-->
+        <!--/experience-->
 
         <hr style="visibility:hidden" />
 
