@@ -34,7 +34,8 @@ module.exports = function (grunt) {
                 files: [
                     { src: '404.html', dest: 'dist/404.html' },
                     { src: 'favicon.html', dest: 'dist/favicon.html' },
-                    { src: 'bower_components/respond/dest/respond.min.js', dest: 'dist/respond.min.js' }
+                    { src: 'bower_components/respond/dest/respond.min.js', dest: 'dist/respond.min.js' },
+                    { src: 'web.config', dest: 'dist/web.config' }
                 ]
             }
         },
