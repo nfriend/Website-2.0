@@ -8,10 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-    <link href="/bootstrap-3.0.2-dist/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
-    <link href='/css/stylesheet.min.css' rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" class="dom_munger-ignore">
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600" rel="stylesheet" type="text/css" class="dom_munger-ignore">
 
     <!--[if lt IE 8]>
         <script type="text/javascript">
@@ -29,49 +27,10 @@
             window.isLessThanIE10 = true;
         </script>
     <![endif]-->
-
-
-    <script src="/js/jquery-1.10.2.min.js"></script>
-    <script src="/bootstrap-3.0.2-dist/dist/js/bootstrap.min.js"></script>
-
-    <script type="text/javascript">
-
-        var _gaq = _gaq || [];
-        _gaq.push(['_setAccount', 'UA-36351579-1']);
-        _gaq.push(['_trackPageview']);
-
-        (function () {
-            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-        })();
-
-    </script>
-
-    <script>
-        $(init);
-
-        function init() {
-
-            if (window.isLessThanIE8) {
-                $("#IE7warning").css("display", "inline");
-            }
-
-            //if svg is not supported, replace all img tags with non-svg source
-            if (window.isLessThanIE9) {
-                $("img").each(function () {
-                    $(this).attr("src", $(this).attr("fallbacksrc"));
-                });
-            }
-
-            setTimeout(function () {
-                $(".initial-flash").removeClass("initial-flash");
-            }, window.isLessThanIE10 ? 0 : 500);
-        }
-    </script>
+    <link href="app.min.css" rel="stylesheet">
 
 </head>
-<body>
+<body style="overflow:scroll;">
     <div class="container">
         <div class="row" id="header-spacer"></div>
 
@@ -115,5 +74,6 @@
             </div>
         </div>
     </div>
+    <script src="app.min.js"></script>
 </body>
 </html>
